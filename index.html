@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+	<head>
+		<title>
+			Merry Christmas from the Culls!
+		</title>
+        <link rel="stylesheet" href="css/foundation.css" />
+		<link href='http://fonts.googleapis.com/css?family=Playball' rel='stylesheet' type='text/css'>
+		<script src="processing.min.js"></script>
+	</head>
+	<body style="font-family:playball;">
+		<script type="application/processing" data-processing-target="pjs">
+			size(400, 400);
+			//variables
+            //variables
+            var speed = 1;
+            var snow = 200;
+            var numOfSnowflakes = 10;
+            var snowflakes = [];
+
+            for (var i = 0; i < numOfSnowflakes; i++) {
+                snowflakes[i] =  {"x":random(5,395),"y":random(25,250),"sSpeed":random(1,3)};
+            }
+            var fall = function(flake){
+              flake.y += flake.sSpeed;
+              if (flake.y > 352.5){
+                flake.y = 25;
+                flake.x = random(5,395);
+             }
+            };
+
+            draw = function() {
+                
+            background(150, 250, 255);
+
+            fill(255,0,0);
+            var f = createFont("cursive", 20);
+            textFont(f, 40);
+            text("Merry Christmas!!!",37,50);
+            strokeWeight(1.5);
+            //house
+            fill(100,100,100);
+            rect(83,229,15,25);
+            triangle(15,275,120,275,63,225);
+            rect(30,275,75,75);
+            rect(56,315,20,35);
+            ellipse(70,333,1.5,1.5);
+            //body
+            fill(255, 255, 255);
+            stroke(0, 0, 0);
+            ellipse(snow,325,145,145);
+            ellipse(snow,260,100,100);
+            ellipse(snow,200,50,50);
+            //bottom & snowman
+            noStroke();
+            rect(snow-20,200,40,50);
+            rect(snow-49,270,98,50);
+            rect(0,350,400,50);
+            fill(0,0,0);
+            stroke(0,0,0);
+            //eyes
+            ellipse(snow-10,195,5,5);
+            ellipse(snow+10,195,5,5);
+            //arms
+            line(snow-35,225,snow-75,185);
+            line(snow+35,225,snow+75,185);
+            //nose
+            fill(255,150,0);
+            ellipse(snow,205,12,12);
+            fill(0,0,0);
+            ellipse(snow,205,1,1);
+            //hat
+            fill(0,0,0);
+            rect(snow-15,110,30,50);
+            rect(snow-30,160,60,20);
+            //snow flakes
+            fill(255,255,255);
+
+            for (var i = 0; i < numOfSnowflakes; i++) {
+             var flake = snowflakes[i];
+             ellipse(flake.x,flake.y,5,5);
+             fall(flake);
+
+            }
+
+            if (snow > 328) {
+                    speed = -1;
+            }  
+            if (snow < 72) {
+                    speed = 1;
+                }
+
+            snow = snow + speed;
+            };   
+		</script>
+        <div class="row">
+    		<div class="large-6 medium-6 small-12 columns" style="text-align:right;width:400px;float:left;margin:20px">
+    			<canvas id="pjs" style="border:1px solid #cccccc"> </canvas><br>
+    			Love Atticus!
+    		</div> 
+    		<div class="large-6 medium-6 small-12 columns" style="text-align:right;width:481px;font-family:playball;float:left;margin:20px">
+    			<iframe allowtransparency="true" width="485" height="402" src="http://scratch.mit.edu/projects/embed/40826036/?autostart=false" frameborder="0" allowfullscreen></iframe><br>
+    			Love Solomon!
+    		</div>
+        </div> 
+        <div class="row">
+            <div class="large-12 columns" style="text-align:center">
+                <img src="family_web.jpg"><br>
+                Love Marc &amp; Solomon &amp; Elaine &amp; Atticus
+            </div>
+        </div>
+        <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+        <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+        <script src="js/foundation.min.js"></script> 
+
+	</body>
+</html>
